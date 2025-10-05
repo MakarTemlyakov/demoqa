@@ -1,3 +1,5 @@
+package tests;
+
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
@@ -5,13 +7,13 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import pages.LoginPage;
+
 import java.time.Duration;
-import java.util.List;
 
 
-public class BooksPageTest {
+public class LoginPageTest {
     private static WebDriver driver;
     private static final Logger logger = LogManager.getLogger();
 
@@ -23,20 +25,13 @@ public class BooksPageTest {
 
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        driver.get("https://demoqa.com/books");
+        driver.get("https://demoqa.com/login");
     }
 
     @Test
-    public void areBooksUiEqualsApi(){
-        logger.info("Запуск теста для проверки списка кинг...");
-        BookService bookService = new BookService();
-        BooksPage bookPage = new BooksPage(driver);
-        List<Book> apiBooks = bookService.getListBooksByAPI();
-        List<WebElement> books = bookPage.getBooks();
-
-        for(Book book: apiBooks) {
-            Assertions.assertEquals(book.getTitle(), bookPage.getTitleByBook(books.get(apiBooks.indexOf(book))));
-        }
-
+    public void checkLoginForm() {
+        logger.info("Запуск теста для проверки авторизации...");
+        LoginPage page = new LoginPage(driver);
+        Assertions.assertTrue(page.checkLoginByCredentials("test12345@", "Test12345@"));
     }
 }
