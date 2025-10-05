@@ -1,0 +1,2 @@
+# demoqa
+Autotests
