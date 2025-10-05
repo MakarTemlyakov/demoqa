@@ -43,7 +43,7 @@ public class LoginPage {
 
     public boolean checkLoginByCredentials(String name, String password) {
         logger.debug("Инициализация пользовательских данных для авторизации...");
-        //Спрашивал у AI как значение изменить найденного WebElement
+        //Спрашивал у AI какие способы есть для измнения значения в найденном WebElement
         userNameInput.sendKeys(name);
         passwordInput.sendKeys(password);
         loginButton.click();

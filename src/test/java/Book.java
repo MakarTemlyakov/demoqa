@@ -6,20 +6,28 @@ import java.util.Date;
 public class Book {
     @JsonProperty("isbn")
     private String isbn;
+
     @JsonProperty("title")
     private String title;
+
     @JsonProperty("subTitle")
     private String subTitle;
+
     @JsonProperty("author")
     private String author;
+
     @JsonProperty("publish_date")
     private String publishDate;
+
     @JsonProperty("publisher")
     private String publisher;
+
     @JsonProperty("pages")
     private int pages;
+
     @JsonProperty("description")
     public String description;
+
     @JsonProperty("website")
     public String website;
 
@@ -67,6 +75,10 @@ public class Book {
 
     public String publisher(){
         return this.publisher;
+    }
+
+    public void setPublisher(String publisher){
+        this.publisher = publisher;
     }
 
     public int getPages(){

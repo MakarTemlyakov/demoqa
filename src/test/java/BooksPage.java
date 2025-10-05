@@ -30,7 +30,6 @@ public class BooksPage {
         return this.books;
     }
 
-
     public BooksPage(WebDriver driver) {
         this.driver = driver;
         wait =  new WebDriverWait(driver, Duration.ofSeconds(10));
@@ -40,8 +39,8 @@ public class BooksPage {
     private List<Book> getParsedData(String response) throws Exception {
         logger.debug("Парсинг полученных API данных...");
         try {
+            //Спросил у AI как работает ОbjectMapper и можно сделать парсинг объекта вместо создания класса обертки
             ObjectMapper mapper = new ObjectMapper();
-            //Спросил у ai как спрарсить данные в класс без дополнительнных классов оберткок для поля "books"
             JsonNode root = mapper.readTree(response);
             JsonNode booksArray = root.get("books");
             return mapper.readValue(booksArray.toString(), new TypeReference<>(){});
@@ -67,7 +66,6 @@ public class BooksPage {
         } catch (Exception e) {
             logger.error("Ошибка при выполнении HTTP запроса");
             throw new RuntimeException("Не удалось получить данные из API", e);
-
         }
     }
 
