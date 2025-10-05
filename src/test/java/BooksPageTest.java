@@ -29,8 +29,9 @@ public class BooksPageTest {
     @Test
     public void areBooksUiEqualsApi(){
         logger.info("Запуск теста для проверки списка кинг...");
+        BookService bookService = new BookService();
         BooksPage bookPage = new BooksPage(driver);
-        List<Book> apiBooks = bookPage.getListBooksByAPI();
+        List<Book> apiBooks = bookService.getListBooksByAPI();
         List<WebElement> books = bookPage.getBooks();
 
         for(Book book: apiBooks) {
